@@ -20,3 +20,15 @@ steps:
     npm run build
     npm test
   displayName: 'npm install, build and test'
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SonarCloudConnection'
+    organization: 'sureshsonarcloud'
+    scannerMode: 'MSBuild'
+    projectKey: 'AzureProject3105'
+    projectName: 'AzureProject3105'
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
